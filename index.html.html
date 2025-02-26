@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CliffsGonnaHelp</title>
+    <style>
+        body {
+            background-color: #00008B;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+            font-family: 'Georgia', serif;
+            border: 5px solid #ffcc00;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: linear-gradient(90deg, #ffcc00, #ff6699);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 4px 4px 10px rgba(255, 255, 255, 0.7);
+        }
+        .input-container {
+            font-size: 1.5em;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        label {
+            font-size: 1em;
+            margin-top: 10px;
+        }
+        input {
+            font-size: 1em;
+            padding: 5px;
+            width: 250px;
+        }
+        button {
+            margin-top: 20px;
+            font-size: 1em;
+            padding: 10px 20px;
+            background-color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #ffcc00;
+        }
+        .error-message {
+            color: red;
+            font-size: 1.2em;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+    <script>
+        function validateForm(event) {
+            event.preventDefault(); // Prevents default form submission
+
+            const name = document.getElementById('name').value.trim();
+            const surname = document.getElementById('surname').value.trim();
+            const grade = parseInt(document.getElementById('grade').value.trim());
+            const house = document.getElementById('house').value.trim();
+            const errorMessage = document.getElementById('error-message');
+
+            if (!name || !surname || !grade || !house) {
+                errorMessage.textContent = "Enter ALL your information!";
+                errorMessage.style.display = 'block';
+            } else if (grade < 8) {
+                errorMessage.textContent = "Number too low";
+                errorMessage.style.display = 'block';
+            } else if (grade > 12) {
+                errorMessage.textContent = "Invalid Number";
+                errorMessage.style.display = 'block';
+            } else if (grade !== 8) {
+                errorMessage.textContent = "Only Grade 8 students can enter!";
+                errorMessage.style.display = 'block';
+            } else {
+                // Store user info in localStorage
+                localStorage.setItem('name', name);
+                localStorage.setItem('surname', surname);
+                localStorage.setItem('grade', grade);
+                localStorage.setItem('house', house);
+                
+                // Redirect to the subjects page
+                window.location.href = 'subjects.html';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>CliffsGonnaHelp</h1>
+    <form class="input-container" onsubmit="validateForm(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+        
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" placeholder="Enter your surname" required>
+        
+        <label for="grade">Grade:</label>
+        <input type="number" id="grade" placeholder="Enter your grade" required>
+        
+        <label for="house">House:</label>
+        <input type="text" id="house" placeholder="Enter your house" required>
+        
+        <button type="submit">Enter</button>
+        <p id="error-message" class="error-message"></p>
+    </form>
+</body>
+</html>

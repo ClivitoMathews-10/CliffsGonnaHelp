@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Physical Science - Clivito's Website</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        ul li {
+            font-size: 1.5em;
+        }
+        li:first-child a { color: blue; }
+        li:nth-child(2) a { color: pink; }
+        li:nth-child(3) a { color: red; }
+        li:nth-child(4) { color: yellow; }
+        li:nth-child(5) { color: darkgreen; }
+    </style>
+</head>
+<body>
+
+    <section>
+        <h1>Physical Science Topics</h1>
+        <p>Here are some topics you'll explore in Physical Science:</p>
+        <ul>
+            <li><a href="#" class="show-atom">Introduction to Atoms</a></li>
+            <li><a href="#" class="show-subatomic">Sub atomic Particles</a></li>
+            <li><a href="#" class="show-pure">Pure Substances</a></li>
+            <li>Elements</li>
+            <li>Past Paper Guide</li>
+        </ul>
+        
+        <div id="atom-content" style="display: none;">
+            <h2>Introduction to Atoms</h2>
+            <video controls>
+                <source src="Introduction_to_Atoms.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <iframe src="3. Atoms.pdf" width="600" height="400" style="border: none;"></iframe>
+            <iframe src="Introduction_To_Atoms_Worksheet.pdf" width="600" height="400" style="border: none;"></iframe>
+        </div>
+
+        <div id="subatomic-content" style="display: none;">
+            <h2>Sub Atomic Particles</h2>
+            <video controls>
+                <source src="Sub_Atomic_Particles.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <iframe src="4. Sub Atomic Particles.pdf" width="600" height="400" style="border: none;"></iframe>
+        </div>
+
+        <div id="pure-content" style="display: none;">
+            <h2>Pure Substances</h2>
+            <video controls>
+                <source src="Pure_Substances.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Clivito Mathews. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelector('.show-atom').addEventListener('click', function (e) {
+            e.preventDefault();
+            document.getElementById('atom-content').style.display = 'block';
+            document.getElementById('subatomic-content').style.display = 'none';
+            document.getElementById('pure-content').style.display = 'none';
+        });
+
+        document.querySelector('.show-subatomic').addEventListener('click', function (e) {
+            e.preventDefault();
+            document.getElementById('subatomic-content').style.display = 'block';
+            document.getElementById('atom-content').style.display = 'none';
+            document.getElementById('pure-content').style.display = 'none';
+        });
+
+        document.querySelector('.show-pure').addEventListener('click', function (e) {
+            e.preventDefault();
+            document.getElementById('pure-content').style.display = 'block';
+            document.getElementById('atom-content').style.display = 'none';
+            document.getElementById('subatomic-content').style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
